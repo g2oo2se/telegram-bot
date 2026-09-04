@@ -1,17 +1,22 @@
 import logging
 import asyncio
+import os
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import Command
 
 # ============================================================
-# НАСТРОЙКИ (ЗАМЕНИ НА СВОИ)
+# НАСТРОЙКИ (БЕРУТСЯ ИЗ ПЕРЕМЕННЫХ ОКРУЖЕНИЯ НА RENDER)
 # ============================================================
 
-BOT_TOKEN = "8714017427:AAGNMOJCU8f0aA_FsGeuPew4A-NKL0ZPNAI"
+BOT_TOKEN = os.getenv("TELEGRAM_TOKEN")
 ADMIN_ID = 982987647
 PRICE = 1500
 CARD_NUMBER = "5536 9100 1817 2900"
+
+# Проверка: если токен не задан — бот не запустится
+if not BOT_TOKEN:
+    raise ValueError("❌ TELEGRAM_TOKEN не задан! Добавь переменную окружения на Render.")
 
 # ============================================================
 # КОД БОТА (НЕ ТРОГАЙ)
